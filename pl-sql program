@@ -1,0 +1,58 @@
+create or replace package Class_grade as
+  procedure find_grade(marks number);
+end Class_grade;
+
+create or replace package body Class_grade as
+  procedure find_grade(marks number)
+       is grade char;
+    Begin
+
+    if marks >90 then grade := 'A';
+
+    elsif marks >80 and marks <90 then grade := 'B';
+
+    elsif marks >70 and marks <80 then grade := 'c';
+
+    elsif marks >60 and marks <70 then grade := 'D';
+
+    elsif marks<60 then grade := 'F';
+
+    else
+
+      dbms_output.put_line('Invalid');
+
+    end if;
+
+    dbms_output.put_line('Grade : ' || grade);
+
+  end find_grade;
+
+end Class_grade;
+
+
+
+declare 
+
+  marksS1 number;
+
+  marksS2 number;
+
+  marksS3 number;
+
+begin
+
+  marksS1 := 76;
+
+  marksS2 := 37;
+
+  marksS3 := 91;
+
+  Class_grade.find_grade(marksS1);
+
+  Class_grade.find_grade(marksS2);
+
+  Class_grade.find_grade(marksS3);
+
+end;
+
+/
